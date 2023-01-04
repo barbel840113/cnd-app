@@ -76,6 +76,8 @@ BUILD_FLAGS := -tags "$(build_tags_comma_sep)" -ldflags '$(ldflags)' -trimpath
 # The below include contains the tools and runsim targets.
 include contrib/devtools/Makefile
 
+
+	
 all: install lint test
 
 build: go.sum
@@ -117,6 +119,13 @@ clean:
 distclean: clean
 	rm -rf vendor/
 
+########################################
+### Docker
+docker-build:  build \
+	docker build . -t cosmwasm/wasmd:latest	
+
+connect:
+	docker run --rm -it cosmwasm/wasmd:latest /bin/sh
 ########################################
 ### Testing
 

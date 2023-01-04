@@ -10,7 +10,7 @@ RUN set -eux; apk add --no-cache ca-certificates build-base;
 
 RUN apk add git
 # NOTE: add these to run with LEDGER_ENABLED=true
-# RUN apk add libusb-dev linux-headers
+RUN apk add libusb-dev linux-headers
 
 WORKDIR /code
 COPY . /code/
@@ -46,4 +46,4 @@ EXPOSE 26656
 # tendermint rpc
 EXPOSE 26657
 
-CMD ["/usr/bin/wasmd", "version"]
+CMD ["/usr/bin/wasmd", "start"]
