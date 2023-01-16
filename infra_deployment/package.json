@@ -1,0 +1,9 @@
+{
+  "name": "cosmjs-cli-installation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@cosmjs/cli": "^0.29.5"
+  }
+}

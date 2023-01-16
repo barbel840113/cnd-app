@@ -121,11 +121,11 @@ distclean: clean
 
 ########################################
 ### Docker
-docker-build:  build \
+docker-build:  
 	docker build . -t cosmwasm/wasmd:latest	
 
 connect:
-	docker run -p "1317:1317" --rm -it cosmwasm/wasmd:latest  /bin/sh
+	docker run -p "1317:1317" -p "26657:26657" --rm -it cosmwasm/wasmd:latest  /bin/sh
 ########################################
 ### Testing
 

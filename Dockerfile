@@ -46,4 +46,5 @@ EXPOSE 26656
 # tendermint rpc
 EXPOSE 26657
 
+RUN wasmd init talda --chain-id wasm 
 CMD ["/usr/bin/wasmd", "start"]

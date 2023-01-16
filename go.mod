@@ -4,7 +4,9 @@ go 1.18
 
 require (
 	github.com/CosmWasm/wasmvm v1.1.1
+	github.com/cosmos/cosmos-proto v1.0.0-beta.1
 	github.com/cosmos/cosmos-sdk v0.45.9
+	github.com/cosmos/gogoproto v1.4.3
 	github.com/cosmos/iavl v0.19.3
 	github.com/cosmos/ibc-go/v3 v3.3.0
 	github.com/cosmos/interchain-accounts v0.1.0
@@ -17,13 +19,12 @@ require (
 	github.com/pkg/errors v0.9.1
 	github.com/prometheus/client_golang v1.13.0
 	github.com/rakyll/statik v0.1.7
-	github.com/regen-network/cosmos-proto v0.3.1
 	github.com/snikch/goodman v0.0.0-20171125024755-10e37e294daa
 	github.com/spf13/cast v1.5.0
 	github.com/spf13/cobra v1.5.0
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.13.0
-	github.com/stretchr/testify v1.8.0
+	github.com/stretchr/testify v1.8.1
 	github.com/syndtr/goleveldb v1.0.1-0.20200815110645-5c35d600f0ca
 	github.com/tendermint/tendermint v0.34.21
 	github.com/tendermint/tm-db v0.6.7
@@ -69,7 +70,6 @@ require (
 	github.com/golang/glog v1.0.0 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/google/btree v1.1.2 // indirect
-	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/google/orderedcode v0.0.1 // indirect
 	github.com/gorilla/handlers v1.5.1 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
@@ -103,6 +103,7 @@ require (
 	github.com/prometheus/common v0.37.0 // indirect
 	github.com/prometheus/procfs v0.8.0 // indirect
 	github.com/rcrowley/go-metrics v0.0.0-20200313005456-10cdbea86bc0 // indirect
+	github.com/regen-network/cosmos-proto v0.3.1 // indirect
 	github.com/rs/cors v1.8.2 // indirect
 	github.com/rs/zerolog v1.27.0 // indirect
 	github.com/sasha-s/go-deadlock v0.2.1-0.20190427202633-1595213edefa // indirect

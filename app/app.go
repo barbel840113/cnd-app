@@ -112,9 +112,7 @@ import (
 	"github.com/CosmWasm/wasmd/x/wasm"
 	wasmclient "github.com/CosmWasm/wasmd/x/wasm/client"
 	wasmkeeper "github.com/CosmWasm/wasmd/x/wasm/keeper"
-
 	// unnamed import of statik for swagger UI support
-	_ "github.com/cosmos/cosmos-sdk/client/docs/statik"
 )
 
 const appName = "WasmApp"
@@ -857,6 +855,7 @@ func (app *WasmApp) RegisterAPIRoutes(apiSvr *api.Server, apiConfig config.APICo
 	ModuleBasics.RegisterRESTRoutes(clientCtx, apiSvr.Router)
 	ModuleBasics.RegisterGRPCGatewayRoutes(clientCtx, apiSvr.GRPCGatewayRouter)
 
+	apiConfig.Swagger = true
 	// register swagger API from root so that other applications can override easily
 	if apiConfig.Swagger {
 		RegisterSwaggerAPI(apiSvr.Router)
