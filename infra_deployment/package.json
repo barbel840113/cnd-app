@@ -4,6 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "@cosmjs/cli": "^0.29.5"
+    "@cosmjs/cli": "0.29.5"
   }
 }

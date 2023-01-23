@@ -1,0 +1,6 @@
+- name: validator
+  type: local
+  address: wasm1ja25hcmftdzwjlktr452hf8r48pee8tnujlqnq
+  pubkey: '{"@type":"/cosmos.crypto.secp256k1.PubKey","key":"AkwNRvXj7doH7tHGjo/+IRHlWgOjb1TPik/TooyCexct"}'
+  mnemonic: ""
+

@@ -7,7 +7,7 @@ LEDGER_ENABLED ?= true
 SDK_PACK := $(shell go list -m github.com/cosmos/cosmos-sdk | sed  's/ /\@/g')
 BINDIR ?= $(GOPATH)/bin
 SIMAPP = ./app
-
+WASM_ADDRESS = ""
 # for dockerized protobuf tools
 DOCKER := $(shell which docker)
 BUF_IMAGE=bufbuild/buf@sha256:3cb1f8a4b48bd5ad8f09168f10f607ddc318af202f5c057d52a45216793d85e5 #v1.4.0
@@ -128,6 +128,23 @@ connect:
 	docker run -p "1317:1317" -p "26657:26657" --rm -it cosmwasm/wasmd:latest  /bin/sh
 ########################################
 ### Testing
+
+init-block:
+	export PATH=/mnt/d/cnd/wasmd/build:$PATH
+	rm -rf  ~/.wasmd
+	/mnt/d/cnd/wasmd/build/wasmd keys add validator --keyring-backend test >  /mnt/d/cnd/wasmd/testnet_output_data/validator.txt 
+	/mnt/d/cnd/wasmd/build/wasmd init talda --chain-id cnd
+	grep address /mnt/d/cnd/wasmd/testnet_output_data/validator.txt > /mnt/d/cnd/wasmd/testnet_output_data/address.txt
+#### variable := $(shell cat /mnt/d/cnd/wasmd/testnet_output_data/address.txt) 
+### echo $variable
+###    WASM_ADDRESS :=  $(file < /mnt/d/cnd/wasmd/testnet_output_data/address.txt)
+	echo $(WASM_ADDRESS)
+    echo $(call split-dot,$(shell cat /mnt/d/cnd/wasmd/testnet_output_data/address.txt),2)	
+	jq '.chain_id = "cnd"' ~/.wasmd/config/genesis.json > temp.json && mv temp.json ~/.wasmd/config/genesis.json
+	sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.wasmd/config/app.toml
+	jq '.app_state.gov.voting_params.voting_period = "600s"' ~/.wasmd/config/genesis.json > temp.json && mv temp.json ~/.wasmd/config/genesis.json
+	jq '.app_state.mint.minter.inflation = "0.300000000000000000"' ~/.wasmd/config/genesis.json > temp.json && mv temp.json ~/.wasmd/config/genesis.json
+	/mnt/d/cnd/wasmd/build/wasmd  add-genesis-account wasm16ps2ysn3avarp3tr00c8gauy49au9xgunfet5w 10000000000000000000000stake
 
 
 test: test-unit

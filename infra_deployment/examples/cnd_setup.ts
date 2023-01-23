@@ -88,6 +88,7 @@ async function main(hackatomWasmPath: string) {
 //   const uploadReceipt = await client.upload(admin.address0, wasm, uploadFee);
 //   console.info("Upload succeeded. Receipt:", uploadReceipt);
 
+
   // Instantiate
   const instantiateFee = calculateFee(500_000, gasPrice);
   // This contract specific message is passed to the contract
