@@ -145,7 +145,7 @@ gen-block:
 	sed -i '/\[api\]/,+3 s/enable = false/enable = true/' ~/.wasmd/config/app.toml
 	jq '.app_state.gov.voting_params.voting_period = "600s"' ~/.wasmd/config/genesis.json > temp.json && mv temp.json ~/.wasmd/config/genesis.json
 	jq '.app_state.mint.minter.inflation = "0.300000000000000000"' ~/.wasmd/config/genesis.json > temp.json && mv temp.json ~/.wasmd/config/genesis.json
-	/mnt/d/cnd/wasmd/build/wasmd  add-genesis-account $(word 2, $(file < /mnt/d/cnd/wasmd/testnet_output_data/address.txt)) 100000000000stake
+	/mnt/d/cnd/wasmd/build/wasmd  add-genesis-account $(word 2, $(file < /mnt/d/cnd/wasmd/testnet_output_data/address.txt)) 1000000000000stake
 
 add-val:
 	/mnt/d/cnd/wasmd/build/wasmd gentx validator 100000000stake --chain-id cnd --keyring-backend test	

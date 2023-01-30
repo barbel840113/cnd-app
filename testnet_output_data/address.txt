@@ -1,1 +1,1 @@
-  address: wasm1235jexwyq4qr7dmha8rkq2ydve9kqsmcra38lk
+  address: wasm14j2th3wzhk9t7w0jgelcak4w92y23h792fvzrl
