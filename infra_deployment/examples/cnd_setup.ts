@@ -48,12 +48,8 @@ const downloadWasm = async (url: string): Promise<Uint8Array> => {
 const password = "P@ssword1";
 // Example user from scripts/wasmd/README.md
 const admin = {
-  mnemonic: "recipe kingdom barely gallery beauty biology venture verify patrol aware note core actress fat area romance client travel critic power vapor impose rebel physical",
-  address0: " wasm16ps2ysn3avarp3tr00c8gauy49au9xgunfet5w",
-//   address1: "wasm1hhg2rlu9jscacku2wwckws7932qqqu8xm5ca8y",
-//   address2: "wasm1xv9tklw7d82sezh9haa573wufgy59vmwnxhnsl",
-//   address3: "wasm17yg9mssjenmc3jkqth6ulcwj9cxujrxxg9nmzk",
-//   address4: "wasm1f7j7ryulwjfe9ljplvhtcaxa6wqgula3nh873j",
+  mnemonic: "fossil survey tourist pave sell arrange antenna sun science siren actress play joke poem wait wasp domain attend atom road dynamic pioneer receive afraid",
+  address0: " wasm1ehumwgyzs9js4hdu5za6v86z9cscq27dfw6yz4",
 };
 
 async function main(hackatomWasmPath: string) {
@@ -85,7 +81,7 @@ async function main(hackatomWasmPath: string) {
   //send tokens
   let response = await client.sendTokens(admin.address0, "wasm1j0406fmd2h6c0adufvvqpvp4su9twd8whct4wu", [{denom: "stake", amount: "10000"}], uploadFee);
   console.info(response.data);
-//   const uploadReceipt = await client.upload(admin.address0, wasm, uploadFee);
+   const uploadReceipt = await client.upload(admin.address0, wasm, uploadFee);
 //   console.info("Upload succeeded. Receipt:", uploadReceipt);
 
 
