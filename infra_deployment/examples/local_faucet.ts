@@ -15,8 +15,8 @@ interface TokenInfo{
 const rpcEndpoint = "http://localhost:26657";
 
 const faucetMnemonic =
-  "road adult loud giggle trouble topic corn domain below visa elbow twenty plastic company olympic agree corn fit box ship home tray nerve offer";
-const walletAddress = "wasm1ywwcr0532l8ce8ta5cjtngzmkln27axwpahqxv";
+  "light kiss buzz rescue test have struggle spawn infant picnic glide rival together birth fuel end innocent labor sheriff sunny pulp consider sword text";
+const walletAddress = "wasm1mpd06nwea88lwpv908gwpv9k88z87ln7ex3seu";
 const faucetName = "validator";
 console.info('fsdfsdf');
 const gasPrice = GasPrice.fromString("0.025stake");
@@ -24,8 +24,10 @@ const wallet = await DirectSecp256k1HdWallet.fromMnemonic(faucetMnemonic, { pref
 const client = await SigningCosmWasmClient.connectWithSigner(rpcEndpoint, wallet, {gasPrice: new GasPrice(Decimal.fromUserInput("200000", 8),"stake")});
 console.info(await client.getBalance(walletAddress, "stake"));
 const uploadFee = calculateFee(2500_000, gasPrice);
-const hackatom = `/mnt/d/cnd/cw-plus/artifacts/cw20_base.wasm`;
+const hackatom = `/mnt/d/cnd/wasmd/contracts/artifacts/cw20_base.wasm`;
 const wasm = fs.readFileSync(hackatom);
+const tt = fs.readFileSync('/mnt/d/cnd/wasmd/testnet_output_data/address.txt');
+console.info(tt);
 console.info(wasm);
 const uploadReceipt = await client.upload(walletAddress, wasm, uploadFee);
 console.info(uploadReceipt);
@@ -42,7 +44,7 @@ const eth_erc_init = await client.instantiate(walletAddress, uploadReceipt.codeI
 eth_erc_init.logs[0].events[0];
 const fooAddr = eth_erc_init.contractAddress;
 console.info(fooAddr);
-const balance = client.queryContractSmart(fooAddr, { balance: { address: walletAddress } });
+const balance = await client.queryContractSmart(fooAddr, { balance: { address: walletAddress } });
 console.info(balance);
 // let result :TokenInfo = await client.queryContractSmart("wasm14hj2tavq8fpesdwxxcu44rty3hh90vhujrvcmstl4zr3txmfvw9s0phg4d",{token_info: {}});
 // console.info(result.decimals);

@@ -147,6 +147,9 @@ gen-block:
 	jq '.app_state.mint.minter.inflation = "0.300000000000000000"' ~/.wasmd/config/genesis.json > temp.json && mv temp.json ~/.wasmd/config/genesis.json
 	/mnt/d/cnd/wasmd/build/wasmd  add-genesis-account $(word 2, $(file < /mnt/d/cnd/wasmd/testnet_output_data/address.txt)) 1000000000000stake
 
+save-addr:
+	@$(word 2, $(file < /mnt/d/cnd/wasmd/testnet_output_data/address.txt)) > /mnt/d/cnd/wasmd/testnet_output_data/address.txt
+
 add-val:
 	/mnt/d/cnd/wasmd/build/wasmd gentx validator 100000000stake --chain-id cnd --keyring-backend test	
 add-gen:
